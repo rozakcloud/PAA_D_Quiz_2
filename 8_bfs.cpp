@@ -23,6 +23,22 @@ int cetakMatrix(int mat[N][N]) {
 	printf("------\n");
 } 
 
+Node* newNode(int mat[N][N], int x, int y, int newX, int newY, int level, Node* parent) { 
+	Node* node = new Node; 
+	node->parent = parent; 
+
+	memcpy(node->mat, mat, sizeof node->mat); 
+
+	swap(node->mat[x][y], node->mat[newX][newY]); 
+
+	node->level = level; 
+
+	node->x = newX; 
+	node->y = newY; 
+
+	return node; 
+} 
+
 int main() { 
 	int initial[N][N] = { 
 		{1, 2, 3}, 
