@@ -9,6 +9,20 @@ struct Node {
 	int level;
 }; 
 
+int cetakMatrix(int mat[N][N]) { 
+	for (int i = 0; i < N; i++) 
+	{ 
+		for (int j = 0; j < N; j++)
+		{
+			
+			printf("%d ", mat[i][j]); 
+		}
+		printf("\n");
+		
+	}
+	printf("------\n");
+} 
+
 int main() { 
 	int initial[N][N] = { 
 		{1, 2, 3}, 
@@ -21,32 +35,8 @@ int main() {
 		{5, 8, 6}, 
 		{0, 7, 4} 
 	}; 
-	
-	printf("Initial\n");
-	for (int i = 0; i < N; i++) 
-	{ 
-		for (int j = 0; j < N; j++)
-		{
-			
-			printf("%d ", initial[i][j]); 
-		}
-		printf("\n");
-		
-	}
-	printf("------\n");
-	
-	printf("Target Final\n");
-	for (int i = 0; i < N; i++) 
-	{ 
-		for (int j = 0; j < N; j++)
-		{
-			
-			printf("%d ", final[i][j]); 
-		}
-		printf("\n");
-		
-	}
-	printf("------\n");
+	cetakMatrix(initial);
+	cetakMatrix(final);
 
 	return 0; 
 } 
