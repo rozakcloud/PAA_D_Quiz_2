@@ -39,6 +39,22 @@ Node* newNode(int mat[N][N], int x, int y, int newX, int newY, int level, Node* 
 	return node; 
 } 
 
+int row[] = { 1, 0, -1, 0 }; 
+int col[] = { 0, -1, 0, 1 }; 
+
+int isSafe(int x, int y) { 
+	return (x >= 0 && x < N && y >= 0 && y < N); 
+} 
+
+void cetakPath(Node* root) { 
+	if (root == NULL) 
+		return; 
+	cetakPath(root->parent);
+	cetakMatrix(root->mat); 
+
+	printf("\n"); 
+} 
+
 int main() { 
 	int initial[N][N] = { 
 		{1, 2, 3}, 
