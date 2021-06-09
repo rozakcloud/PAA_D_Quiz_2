@@ -95,6 +95,32 @@ int minimax(char pawns)
     return result;
 }
 
+void take_path()
+{
+    int result,temp;
+    int x=-1,y=-1;
+    result = MIN;
+    for(int i=0;i<3;i++)
+    {
+        for(int j=0;j<3;j++)
+        {
+            if(board[i][j]==empty){
+                board[i][j] = comp;
+                temp = minimax(player);
+                if(temp>result)
+                {
+                    result = temp;
+                    x = i;
+                    y = j;
+                }
+                board[i][j] = empty;
+            }
+        }
+    }
+    board[x][y] = comp;
+    return;
+}
+
 void play()
 {
     system("cls");
