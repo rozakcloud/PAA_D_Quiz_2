@@ -127,13 +127,58 @@ void play()
     printf("Let's play Tic Tac Toe':\nYou: O, Computer: X\n");
     printf("Press any key to continue");
     getch();
-    system("cls");
-    for(int i=0;i<3;i++){
-        for(int j=0;j<3;j++){
-        	printf(" %c ", board[i][j]);
-    	}
-    	printf("\n");
+    int score;
+    for(int i=0;i<9;i++){
+        system("cls");
+        score = score_eval();
+        if(score!=0) break;
+        if(!(i%2)){
+            printf("Your Turn:\n");
+            debugc(board);
+            int x,y;
+            printf("Raw Column: ");
+            scanf("%d %d",&x,&y);
+            x--;y--;
+            while(x>2 || y>2 || board[x][y]!=empty){
+                system("cls");
+                printf("Your Turn:\n");
+                debugc(board);
+                printf("Input is invalid or it's already filled'\n");
+                printf("Raw Column: ");
+                scanf("%d %d",&x,&y);
+                x--;y--;
+            }
+            board[x][y]=player;
+            system("cls");
+            printf("Your turn:\n");
+            debugc(board);
+            Sleep(500);
+            printf("Press any key to continue");
+            getch();
+        }
+        else{
+            for(int k=3;k>=1;k--){
+                system("cls");
+                printf("Computer's Turn:\n");
+                debugc(board);
+                printf("Computer still loading %d\n",k);
+                Sleep(1000);
+            }
+            take_path();
+            system("cls");
+            printf("Computer's Turn':\n");
+            debugc(board);
+            Sleep(500);
+            printf("Press any key to continue");
+            getch();
+        }
     }
+    system("cls");
+    printf("The result is:\n");
+    debugc(board);
+    if(score == 10) printf("Computer win!\n");
+    if(score == -10) printf("You win!\n");
+    if(score == 0) printf("DRAW!\n");
 }
 
 int main()
