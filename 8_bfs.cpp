@@ -65,6 +65,37 @@ bool cekgoal (int mat[N][N],int final [N] [N]) {
  	return true;
 }
 
+void solve(int initial[N][N], int x, int y, int final[N][N]) 
+{ 
+	queue <Node*> pq;
+	
+	Node* root = newNode(initial, x, y, x, y, 0, NULL); 
+
+	pq.push(root); 
+
+	while (!pq.empty()) { 
+		Node* min = pq.front(); 
+
+		pq.pop(); 
+
+		if (cekgoal (min->mat, final)) { 
+			cetakPath(min); 
+			printf ("Jumlah langkah: %d",min->level);
+			return; 
+		} 
+		
+		for (int i = 0; i < 4; i++) { 
+			if (isSafe(min->x + row[i], min->y + col[i])) { 
+				Node* child = newNode(min->mat, min->x, 
+							min->y, min->x + row[i], 
+							min->y + col[i], 
+							min->level + 1, min);  
+				pq.push(child); 
+			} 
+		} 
+	} 
+} 
+
 int main() { 
 	int initial[N][N] = { 
 		{1, 2, 3}, 
@@ -77,8 +108,14 @@ int main() {
 		{5, 8, 6}, 
 		{0, 7, 4} 
 	}; 
+	printf("Ini Initial\n");
 	cetakMatrix(initial);
+	printf("Ini Final\n");
 	cetakMatrix(final);
+
+	int x = 1, y = 2; 
+
+	solve(initial, x, y, final);
 
 	return 0; 
 } 
