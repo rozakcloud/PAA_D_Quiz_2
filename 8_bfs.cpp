@@ -55,6 +55,16 @@ void cetakPath(Node* root) {
 	printf("\n"); 
 } 
 
+bool cekgoal (int mat[N][N],int final [N] [N]) {
+ 	for (int i = 0; i < N; i++) { 
+		for (int j = 0; j < N; j++) 
+			if (mat [i] [j] != final [i] [j]) 
+			return false;
+	}
+	 
+ 	return true;
+}
+
 int main() { 
 	int initial[N][N] = { 
 		{1, 2, 3}, 
