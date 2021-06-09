@@ -58,6 +58,43 @@ int min(int a,int b)
     return a<b ? a:b;
 }
 
+int minimax(char pawns)
+{
+    int score = score_eval();
+    if(score!=0){
+        return score;
+    }
+    if(!StillPlay()){
+        return 0;
+    }
+    int result;
+    if(pawns==comp){
+        result = MIN;
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                if(board[i][j]==empty){
+                    board[i][j] = pawns;
+                    result = max(result,minimax(other(pawns)));
+                    board[i][j]=empty;
+                }
+            }
+        }
+    }
+    else{
+        result = MAX;
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                if(board[i][j]==empty){
+                    board[i][j] = pawns;
+                    result = min(result,minimax(other(pawns)));
+                    board[i][j]=empty;
+                }
+            }
+        }
+    }
+    return result;
+}
+
 void play()
 {
     system("cls");
@@ -72,6 +109,7 @@ void play()
     	printf("\n");
     }
 }
+
 int main()
 {
     play();  
