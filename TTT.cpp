@@ -124,7 +124,7 @@ void take_path()
 void play()
 {
     system("cls");
-    printf("Let's play Tic Tac Toe':\nYou: O, Computer: X\n");
+    printf("Let's play Tic Tac Toe:\nYou: O, Computer: X\n");
     printf("Press any key to continue");
     getch();
     int score;
@@ -136,14 +136,14 @@ void play()
             printf("Your Turn:\n");
             debugc(board);
             int x,y;
-            printf("Raw Column: ");
+            printf("Input row and column: ");
             scanf("%d %d",&x,&y);
             x--;y--;
             while(x>2 || y>2 || board[x][y]!=empty){
                 system("cls");
                 printf("Your Turn:\n");
                 debugc(board);
-                printf("Input is invalid or it's already filled'\n");
+                printf("Input is invalid or it's already filled\n");
                 printf("Raw Column: ");
                 scanf("%d %d",&x,&y);
                 x--;y--;
@@ -166,7 +166,7 @@ void play()
             }
             take_path();
             system("cls");
-            printf("Computer's Turn':\n");
+            printf("Computer's Turn:\n");
             debugc(board);
             Sleep(500);
             printf("Press any key to continue");
@@ -178,7 +178,7 @@ void play()
     debugc(board);
     if(score == 10) printf("Computer win!\n");
     if(score == -10) printf("You win!\n");
-    if(score == 0) printf("DRAW!\n");
+    if(score == 0) printf("It's a draw!\n");
 }
 
 int main()
